@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Star, ArrowRight, Car, ShieldCheck, Clock, MapPin } from 'lucide-react';
+import { ArrowRight, Car } from 'lucide-react';
 import { FLEET } from '../constants';
 
 export const Hero: React.FC = () => {
@@ -40,11 +40,6 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="container hero-content">
-        <div className="hero-badge">
-          <Star size={14} fill="currentColor" />
-          <span>Tradice a spolehlivost od roku 1993</span>
-        </div>
-
         <h1>Cestujte na úrovni s Autodopravou CHOCHOLA</h1>
 
         <p className="hero-lead">
@@ -61,21 +56,6 @@ export const Hero: React.FC = () => {
             <Car size={18} />
             <span>Prohlédnout vozový park</span>
           </a>
-        </div>
-
-        <div className="hero-highlights">
-          <div className="hero-pill">
-            <ShieldCheck size={16} className="icon-gold" />
-            <span>Flotila Mercedes-Benz &amp; Setra</span>
-          </div>
-          <div className="hero-pill">
-            <Clock size={16} className="icon-gold" />
-            <span>Vždy včas a spolehlivě 24/7</span>
-          </div>
-          <div className="hero-pill">
-            <MapPin size={16} className="icon-gold" />
-            <span>Znojmo • Letiště • Celá Evropa</span>
-          </div>
         </div>
       </div>
     </section>

@@ -274,7 +274,7 @@
 .hero-actions {
   display: flex;
   gap: 1.25rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 .btn-lg {
@@ -1160,6 +1160,10 @@
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .stat-card {
+    padding: 1.25rem 1rem;
   }
   .fleet-cards-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1192,8 +1196,8 @@
     padding: 3.5rem 0;
   }
   .hero {
-    min-height: 75vh;
-    padding: 5rem 0 4rem;
+    min-height: 68vh;
+    padding: 4.5rem 0 3.5rem;
   }
   .hero h1 {
     font-size: 2.1rem;
@@ -1205,10 +1209,44 @@
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    margin-bottom: 0;
   }
   .btn {
     width: 100%;
     justify-content: center;
+  }
+  .stats-section {
+    margin-top: -1.75rem;
+    padding: 1.25rem 0 2rem;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+  .stat-card {
+    padding: 0.9rem 0.6rem;
+    border-radius: 6px;
+  }
+  .stat-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0.5rem;
+  }
+  .stat-icon-wrapper svg {
+    width: 18px;
+    height: 18px;
+  }
+  .stat-value {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .stat-title {
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
+  }
+  .stat-desc {
+    font-size: 0.7rem;
+    line-height: 1.25;
   }
   .fleet-cards-grid {
     grid-template-columns: 1fr;
@@ -1269,16 +1307,5 @@
   }
   .contact-card, .contact-form {
     padding: 1.75rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .stats-section {
-    margin-top: 0;
-    padding: 2rem 0;
   }
 }
