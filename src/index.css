@@ -1,20 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Premium Dark Palette */
-  --primary: #0a0a0b;      /* Deep Black */
-  --secondary: #c5a059;    /* Refined Gold */
-  --secondary-light: #dfc28d;
-  --wine: #8b1e3f;         /* Wine Red Accent */
-  --wine-light: #ab2850;
-  --accent: rgba(26, 26, 28, 0.75); /* Glassmorphism translucent card background */
-  --text: #e2e2e2;         /* Soft White */
-  --text-dim: #a0a0a0;     /* Muted Text */
+  /* Clean Lighter Dark & Silver/White Palette (Mercedes-Benz Showroom Style) */
+  --primary: #14161a;          /* Lighter Charcoal / Anthracite */
+  --primary-alt: #1a1d23;      /* Elevated Section Charcoal */
+  --card-bg: rgba(32, 36, 44, 0.85); /* Clean Slate Card Surface */
+  --secondary: #ffffff;        /* Pure Crisp White for Headings & Primary CTA */
+  --secondary-light: #e2e8f0;  /* Soft Silver Hover */
+  --silver: #cbd5e1;           /* Metallic Silver Accent */
+  --text: #f1f5f9;             /* Crisp Off-White Body Text */
+  --text-dim: #94a3b8;         /* Clean Cool Grey Muted Text */
   --white: #ffffff;
-  --border: rgba(197, 160, 89, 0.18); /* Elegant subtle gold-tinted border */
-  
-  --glow-gold: rgba(197, 160, 89, 0.12);
-  --glow-wine: rgba(139, 30, 63, 0.14);
+  --border: rgba(255, 255, 255, 0.12); /* Subtle Silver/White Hairline Border */
+  --border-hover: rgba(255, 255, 255, 0.32);
 
   --sans: 'Inter', system-ui, -apple-system, sans-serif;
   --max-width: 1200px;
@@ -24,6 +22,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -42,7 +44,7 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--sans);
   color: var(--secondary);
-  line-height: 1.1;
+  line-height: 1.15;
   font-weight: 700;
 }
 
@@ -67,35 +69,37 @@ ul {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  border-radius: 2px; /* Sharper edges for premium look */
+  border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid transparent;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   font-size: 0.875rem;
 }
 
 .btn-primary {
   background-color: var(--secondary);
-  color: var(--primary);
+  color: #0f1115;
 }
 
 .btn-primary:hover {
   background-color: var(--secondary-light);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
 }
 
 .btn-outline {
-  border: 1px solid var(--secondary);
+  border: 1px solid rgba(255, 255, 255, 0.38);
   color: var(--secondary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .btn-outline:hover {
   background: var(--secondary);
-  color: var(--primary);
+  color: #0f1115;
+  border-color: var(--secondary);
 }
 
 section {
@@ -103,7 +107,7 @@ section {
 }
 
 .bg-alt {
-  background-color: #0f0f11;
+  background-color: var(--primary-alt);
 }
 
 /* Section Headings */
@@ -115,12 +119,13 @@ section {
 .section-header h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--white);
 }
 
 .section-header .subtitle {
-  color: var(--secondary);
+  color: var(--silver);
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   font-size: 0.75rem;
   font-weight: 700;
   display: block;
