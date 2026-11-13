@@ -89,7 +89,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
                 <div className="fleet-gallery-overlay">
                   <span className="fleet-gallery-trigger">
                     <Camera size={18} />
-                    Otevřít galerii ({vehicle.gallery.length} fotek)
+                    Galerie
                   </span>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
                     }}
                   >
                     <Camera size={16} />
-                    <span>Fotogalerie ({vehicle.gallery.length})</span>
+                    <span>Galerie</span>
                   </button>
                   <button
                     type="button"
