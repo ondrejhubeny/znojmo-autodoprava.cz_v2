@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
 
         <p className="hero-lead">
           Profesionální osobní, mikrobusová a autobusová přeprava ze Znojma po celé ČR i Evropě.
-          Od luxusního sedanu pro 4 osoby až po zájezdový autokar Setra pro 48+1 cestujících.
+          Od luxusního sedanu pro 4 osoby až po zájezdový autokar Setra pro 52 cestujících.
         </p>
 
         <div className="hero-actions">
