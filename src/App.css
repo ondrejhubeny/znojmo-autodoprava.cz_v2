@@ -757,6 +757,10 @@
   gap: 0.65rem;
 }
 
+.gallery-mobile-counter {
+  display: none;
+}
+
 .gallery-thumb-btn {
   border: 2px solid transparent;
   border-radius: 6px;
@@ -765,17 +769,20 @@
   cursor: pointer;
   background: #0e1014;
   padding: 0;
-  opacity: 0.55;
+  opacity: 0.4;
+  filter: brightness(0.65);
   transition: all 0.2s ease;
 }
 
 .gallery-thumb-btn:hover {
   opacity: 0.85;
+  filter: brightness(0.9);
 }
 
 .gallery-thumb-btn.active {
   border-color: var(--white);
   opacity: 1;
+  filter: brightness(1.05);
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
 }
 
@@ -1280,16 +1287,81 @@
   .form-row-3 {
     grid-template-columns: 1fr;
   }
+  .gallery-modal-backdrop {
+    padding: 0;
+    background: #090a0d;
+  }
+  .gallery-modal-content {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    max-width: 100vw;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: #090a0d;
+    justify-content: space-between;
+    gap: 0;
+  }
   .gallery-modal-header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .gallery-header-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .gallery-modal-header h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+  }
+  .gallery-mobile-counter {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--silver);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .gallery-modal-meta,
+  .gallery-book-btn-desktop,
+  .gallery-nav-btn {
+    display: none;
   }
   .gallery-modal-header-actions {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+  }
+  .gallery-main-stage {
+    flex: 1;
+    width: 100vw;
+    max-height: none;
+    min-height: 0;
+    border-radius: 0;
+    background: #090a0d;
+    touch-action: pan-y;
+  }
+  .gallery-main-img {
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 76dvh;
+    object-fit: contain;
   }
   .gallery-thumbnails {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.35rem;
+    padding: 0.65rem 0.6rem 1.15rem;
+    background: #090a0d;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .gallery-thumb-btn {
+    border-radius: 4px;
+    border-width: 1.5px;
   }
   .services-grid {
     grid-template-columns: repeat(3, 1fr);

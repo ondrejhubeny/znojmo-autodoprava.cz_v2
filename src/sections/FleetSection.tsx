@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Users, Camera, Check, X, ChevronLeft, ChevronRight, CalendarCheck } from 'lucide-react';
 import { FLEET } from '../constants';
 import type { Vehicle } from '../types';
@@ -10,6 +10,10 @@ interface FleetSectionProps {
 export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForInquiry }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [photoIndex, setPhotoIndex] = useState<number>(0);
+
+  // Touch swipe state for mobile gallery
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   const openGallery = (vehicle: Vehicle, startIndex = 0) => {
     setSelectedVehicle(vehicle);
@@ -32,6 +36,28 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
     e?.stopPropagation();
     if (!selectedVehicle) return;
     setPhotoIndex((prev) => (prev - 1 + selectedVehicle.gallery.length) % selectedVehicle.gallery.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = touchStartX.current - e.changedTouches[0].clientX;
+    const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+
+    // Horizontal swipe threshold 35px
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 35) {
+      if (deltaX > 0) {
+        nextPhoto();
+      } else {
+        prevPhoto();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
   };
 
   useEffect(() => {
@@ -140,8 +166,11 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
         <div className="gallery-modal-backdrop" onClick={closeGallery}>
           <div className="gallery-modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="gallery-modal-header">
-              <div>
+              <div className="gallery-header-title-group">
                 <h3>{selectedVehicle.model}</h3>
+                <span className="gallery-mobile-counter">
+                  {photoIndex + 1} / {selectedVehicle.gallery.length}
+                </span>
                 <span className="gallery-modal-meta">
                   {selectedVehicle.subtitle} • Kapacita: <strong>{selectedVehicle.capacity}</strong> • Fotka {photoIndex + 1} z {selectedVehicle.gallery.length}
                 </span>
@@ -149,7 +178,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
               <div className="gallery-modal-header-actions">
                 <button
                   type="button"
-                  className="btn btn-primary btn-sm"
+                  className="btn btn-primary btn-sm gallery-book-btn-desktop"
                   onClick={(e) => handleBookVehicle(selectedVehicle, e)}
                 >
                   <CalendarCheck size={15} />
@@ -166,7 +195,11 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
               </div>
             </div>
 
-            <div className="gallery-main-stage">
+            <div
+              className="gallery-main-stage"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <button
                 type="button"
                 className="gallery-nav-btn prev"
@@ -181,6 +214,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
                   src={selectedVehicle.gallery[photoIndex]}
                   alt={`${selectedVehicle.model} - foto ${photoIndex + 1}`}
                   className="gallery-main-img"
+                  draggable={false}
                 />
               </div>
 
