@@ -19,6 +19,13 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className="header">
       <div className="container header-content">
