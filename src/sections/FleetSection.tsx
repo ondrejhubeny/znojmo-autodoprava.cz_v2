@@ -10,6 +10,8 @@ interface FleetSectionProps {
 export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForInquiry }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [photoIndex, setPhotoIndex] = useState<number>(0);
+  const [dragOffset, setDragOffset] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
 
   // Touch swipe state for mobile gallery
   const touchStartX = useRef<number | null>(null);
@@ -18,11 +20,15 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
   const openGallery = (vehicle: Vehicle, startIndex = 0) => {
     setSelectedVehicle(vehicle);
     setPhotoIndex(startIndex);
+    setDragOffset(0);
+    setIsDragging(false);
     document.body.style.overflow = 'hidden';
   };
 
   const closeGallery = () => {
     setSelectedVehicle(null);
+    setDragOffset(0);
+    setIsDragging(false);
     document.body.style.overflow = '';
   };
 
@@ -41,15 +47,32 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const deltaX = currentX - touchStartX.current;
+    const deltaY = currentY - touchStartY.current;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      setDragOffset(deltaX);
+    }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null || touchStartY.current === null) return;
+    if (touchStartX.current === null || touchStartY.current === null) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
     const deltaX = touchStartX.current - e.changedTouches[0].clientX;
     const deltaY = touchStartY.current - e.changedTouches[0].clientY;
 
-    // Horizontal swipe threshold 35px
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 35) {
+    // Horizontal swipe threshold 40px
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
       if (deltaX > 0) {
         nextPhoto();
       } else {
@@ -58,6 +81,8 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
     }
     touchStartX.current = null;
     touchStartY.current = null;
+    setIsDragging(false);
+    setDragOffset(0);
   };
 
   useEffect(() => {
@@ -198,6 +223,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
             <div
               className="gallery-main-stage"
               onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <button
@@ -209,13 +235,25 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
                 <ChevronLeft size={30} />
               </button>
 
-              <div className="gallery-main-img-wrapper">
-                <img
-                  src={selectedVehicle.gallery[photoIndex]}
-                  alt={`${selectedVehicle.model} - foto ${photoIndex + 1}`}
-                  className="gallery-main-img"
-                  draggable={false}
-                />
+              <div
+                className={`gallery-slider-track ${isDragging ? 'dragging' : ''}`}
+                style={{
+                  transform: `translate3d(calc(-${photoIndex * 100}% + ${dragOffset}px), 0, 0)`
+                }}
+              >
+                {selectedVehicle.gallery.map((imgUrl, idx) => (
+                  <div
+                    key={idx}
+                    className={`gallery-slide ${idx === photoIndex ? 'active' : ''}`}
+                  >
+                    <img
+                      src={imgUrl}
+                      alt={`${selectedVehicle.model} - foto ${idx + 1}`}
+                      className="gallery-main-img"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
               </div>
 
               <button
