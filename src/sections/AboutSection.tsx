@@ -42,7 +42,12 @@ const CLIENT_LOGOS = [
   { name: 'Hotel Savannah', src: savanahImg },
 ];
 
-// Doubled logos for seamless infinite continuous scroll
+// Desktop rows: 6, 7, 6 (19 logos total)
+const DESKTOP_ROW_1 = CLIENT_LOGOS.slice(0, 6);
+const DESKTOP_ROW_2 = CLIENT_LOGOS.slice(6, 13);
+const DESKTOP_ROW_3 = CLIENT_LOGOS.slice(13, 19);
+
+// Doubled logos for seamless infinite continuous scroll on mobile
 const MARQUEE_LOGOS = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
 export const AboutSection: React.FC = () => {
@@ -58,7 +63,33 @@ export const AboutSection: React.FC = () => {
 
         <div className="references-ticker-container">
           <span className="ref-title">Důvěřují nám významné firmy a instituce:</span>
-          
+
+          {/* Desktop 3-row static grid (6 - 7 - 6) */}
+          <div className="references-desktop-grid">
+            <div className="references-row row-6">
+              {DESKTOP_ROW_1.map((logo) => (
+                <div key={logo.name} className="reference-logo-card">
+                  <img src={logo.src} alt={logo.name} title={logo.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <div className="references-row row-7">
+              {DESKTOP_ROW_2.map((logo) => (
+                <div key={logo.name} className="reference-logo-card">
+                  <img src={logo.src} alt={logo.name} title={logo.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <div className="references-row row-6">
+              {DESKTOP_ROW_3.map((logo) => (
+                <div key={logo.name} className="reference-logo-card">
+                  <img src={logo.src} alt={logo.name} title={logo.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile full-width color marquee */}
           <div className="logo-marquee-wrapper">
             <div className="logo-marquee-track">
               {MARQUEE_LOGOS.map((logo, index) => (
