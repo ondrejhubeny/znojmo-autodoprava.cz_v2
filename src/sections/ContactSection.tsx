@@ -86,7 +86,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedVehic
                   onChange={(e) => setSelectedCar(e.target.value)}
                 >
                   <option value="">Vyberte vůz (nepovinné)</option>
-                  {FLEET.map((v) => {
+                  {Array.from(
+                    new Map(FLEET.map((v) => [`${v.model} (${v.capacity})`, v])).values()
+                  ).map((v) => {
                     const label = `${v.model} (${v.capacity})`;
                     return (
                       <option key={v.id} value={label}>
