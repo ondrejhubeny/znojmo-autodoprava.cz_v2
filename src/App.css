@@ -1147,6 +1147,7 @@
 
 /* Contact Form */
 .contact-form {
+  scroll-margin-top: 105px;
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -1484,5 +1485,8 @@
   }
   .contact-card, .contact-form {
     padding: 1.75rem;
+  }
+  .contact-form {
+    scroll-margin-top: 78px;
   }
 }

@@ -26,7 +26,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedVehic
     <section id="kontakt" className="contact bg-alt">
       <div className="container">
         <div className="section-header">
-          <span className="subtitle">Nezávazná poptávka</span>
           <h2>Rezervujte si vůz nebo spočítejte cenu</h2>
           <p className="section-desc">
             Napište nám podrobnosti vaší cesty a obratem vám připravíme přesnou cenovou kalkulaci.
@@ -61,7 +60,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedVehic
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form id="poptavkovy-formular" className="contact-form" onSubmit={handleSubmit}>
             <div className="form-row-2">
               <div className="form-group">
                 <label htmlFor="name">Jméno a příjmení *</label>

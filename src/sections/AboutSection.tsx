@@ -54,16 +54,14 @@ export const AboutSection: React.FC = () => {
   return (
     <section id="o-nas" className="about">
       <div className="container about-content">
-        <span className="subtitle">Proč my</span>
-        <h2>Tradice a profesionalita</h2>
-        <p className="about-text">
-          Již více než 30 let poskytujeme služby v oblasti dopravy s důrazem na individuální přístup. 
-          Naši řidiči jsou profesionálové s miliony kilometrů bez nehod.
-        </p>
+        <div className="section-header">
+          <h2>Naše reference</h2>
+          <p className="section-desc">
+            Za více než 30 let v autodopravě nám pravidelně svěřují přepravu významné firmy, hotely, sportovní kluby i instituce z celého regionu.
+          </p>
+        </div>
 
         <div className="references-ticker-container">
-          <span className="ref-title">Důvěřují nám významné firmy a instituce:</span>
-
           {/* Desktop 3-row static grid (6 - 7 - 6) */}
           <div className="references-desktop-grid">
             <div className="references-row row-6">

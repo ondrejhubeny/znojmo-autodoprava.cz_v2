@@ -43,7 +43,6 @@ export const ServicesSection: React.FC = () => {
     <section id="sluzby" className="services">
       <div className="container">
         <div className="section-header">
-          <span className="subtitle">Prémiové řešení</span>
           <h2>Naše služby</h2>
         </div>
         

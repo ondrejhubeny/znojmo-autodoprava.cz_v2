@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
         </p>
 
         <div className="hero-actions">
-          <a href="#kontakt" className="btn btn-primary btn-lg">
+          <a href="#poptavkovy-formular" className="btn btn-primary btn-lg">
             <span>Nezávazná poptávka</span>
             <ArrowRight size={18} />
           </a>

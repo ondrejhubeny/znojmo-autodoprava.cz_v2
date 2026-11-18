@@ -102,9 +102,9 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
     if (onSelectVehicleForInquiry) {
       onSelectVehicleForInquiry(`${vehicle.model} (${vehicle.capacity})`);
     }
-    const contactEl = document.getElementById('kontakt');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth' });
+    const formEl = document.getElementById('poptavkovy-formular') || document.getElementById('kontakt');
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -112,7 +112,6 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicleForIn
     <section id="vozovy-park" className="fleet">
       <div className="container">
         <div className="section-header">
-          <span className="subtitle">Mercedes-Benz &amp; Setra</span>
           <h2>Náš vozový park</h2>
           <p className="section-desc">
             Klikněte na kterékoliv vozidlo pro zobrazení fotogalerie exteriéru a interiéru.

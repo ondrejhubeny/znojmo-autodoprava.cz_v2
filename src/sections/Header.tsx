@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
             <span className="btn-phone-text">{CONTACT_INFO.phones[0]}</span>
           </a>
 
-          <a href="#kontakt" className="btn btn-primary btn-header-cta">
+          <a href="#poptavkovy-formular" className="btn btn-primary btn-header-cta">
             <CalendarCheck size={16} />
             <span>Poptat jízdu</span>
           </a>
@@ -76,10 +76,10 @@ export const Header: React.FC = () => {
           <a href="#vozovy-park" onClick={handleLinkClick}>Vozový park</a>
           <a href="#sluzby" onClick={handleLinkClick}>Služby</a>
           <a href="#o-nas" onClick={handleLinkClick}>Reference</a>
-          <a href="#kontakt" onClick={handleLinkClick}>Poptávka a kontakt</a>
+          <a href="#kontakt" onClick={handleLinkClick}>Kontakt</a>
         </nav>
         <div className="mobile-drawer-footer">
-          <a href="#kontakt" onClick={handleLinkClick} className="btn btn-primary drawer-btn">
+          <a href="#poptavkovy-formular" onClick={handleLinkClick} className="btn btn-primary drawer-btn">
             <CalendarCheck size={18} /> Nezávazná poptávka
           </a>
           <a href={`tel:${CONTACT_INFO.phones[0]}`} className="btn btn-outline drawer-btn">
