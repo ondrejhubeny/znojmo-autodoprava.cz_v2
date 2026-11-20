@@ -264,11 +264,24 @@
 }
 
 .hero h1 {
-  font-size: clamp(2.3rem, 5vw, 4.4rem);
-  margin-bottom: 1.5rem;
-  max-width: 920px;
+  font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  max-width: 960px;
   color: var(--white);
   text-shadow: 0 4px 25px rgba(0, 0, 0, 0.75);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.1vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 1.75rem;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
 }
 
 .hero-lead {
@@ -1210,9 +1223,34 @@
   justify-content: center;
 }
 
+.form-gdpr-note {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin: 0.25rem 0 0;
+  line-height: 1.45;
+}
+
+.gdpr-inline-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--silver);
+  font-family: var(--sans);
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.gdpr-inline-link:hover {
+  color: var(--white);
+}
+
 /* Footer */
 .footer {
-  padding: 4rem 0;
+  padding: 3.5rem 0 2.5rem;
   background: #101216;
   border-top: 1px solid var(--border);
 }
@@ -1221,12 +1259,140 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  text-align: center;
+  gap: 1.75rem;
 }
 
-.footer p {
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.footer-logo {
+  align-items: center;
+}
+
+.footer-tagline {
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem 2.25rem;
+}
+
+.footer-nav a,
+.footer-gdpr-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--silver);
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.footer-nav a:hover,
+.footer-gdpr-link:hover {
+  color: var(--white);
+}
+
+.footer-bottom {
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom p {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+/* GDPR Modal */
+.gdpr-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(10, 11, 14, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.gdpr-modal-content {
+  width: 100%;
+  max-width: 680px;
+  max-height: 86vh;
+  background: #181b21;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+}
+
+.gdpr-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gdpr-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--white);
+}
+
+.gdpr-modal-title h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--white);
+}
+
+.gdpr-modal-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.35rem;
+}
+
+.gdpr-modal-body h4 {
+  font-size: 0.95rem;
+  color: var(--white);
+  margin: 0.5rem 0 0.15rem;
+}
+
+.gdpr-modal-body h4:first-child {
+  margin-top: 0;
+}
+
+.gdpr-modal-body p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* UNIFIED RESPONSIVE BREAKPOINTS */
@@ -1300,7 +1466,13 @@
     padding: 3.5rem 0 4.5rem;
   }
   .hero h1 {
-    font-size: 2.1rem;
+    font-size: 2.15rem;
+    letter-spacing: 0.04em;
+  }
+  .hero-subtitle {
+    font-size: 0.92rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.35rem;
   }
   .hero-lead {
     font-size: 0.95rem;
@@ -1488,5 +1660,11 @@
   }
   .contact-form {
     scroll-margin-top: 78px;
+  }
+  .footer-nav {
+    gap: 1rem 1.35rem;
+  }
+  .gdpr-modal-content {
+    padding: 1.35rem 1.25rem;
   }
 }

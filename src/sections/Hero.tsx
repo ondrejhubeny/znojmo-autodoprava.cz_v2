@@ -40,7 +40,8 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="container hero-content">
-        <h1>Cestujte na úrovni s Autodopravou CHOCHOLA</h1>
+        <h1>ZNOJMO AUTODOPRAVA</h1>
+        <p className="hero-subtitle">Prémiová osobní doprava</p>
 
         <p className="hero-lead">
           Profesionální osobní, mikrobusová a autobusová přeprava ze Znojma po celé ČR i Evropě.

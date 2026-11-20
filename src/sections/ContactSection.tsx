@@ -4,9 +4,10 @@ import { CONTACT_INFO, FLEET } from '../constants';
 
 interface ContactSectionProps {
   preselectedVehicle?: string;
+  onOpenGdpr?: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedVehicle }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedVehicle, onOpenGdpr }) => {
   const [selectedCar, setSelectedCar] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -132,6 +133,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedVehic
                 </>
               )}
             </button>
+
+            <p className="form-gdpr-note">
+              Odesláním poptávky berete na vědomí{' '}
+              <button type="button" className="gdpr-inline-link" onClick={onOpenGdpr}>
+                Zásady ochrany osobních údajů (GDPR)
+              </button>.
+            </p>
           </form>
         </div>
       </div>

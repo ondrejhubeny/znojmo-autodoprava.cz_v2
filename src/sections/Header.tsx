@@ -29,9 +29,9 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="container header-content">
-        <a href="#" className="logo" aria-label="Autodoprava Chochola Domů">
-          <span className="logo-main">Chochola</span>
-          <span className="logo-sub">Autodoprava Znojmo</span>
+        <a href="#" className="logo" aria-label="Znojmo Autodoprava Domů">
+          <span className="logo-main">Znojmo</span>
+          <span className="logo-sub">Autodoprava</span>
         </a>
 
         {/* Desktop Navigation */}
