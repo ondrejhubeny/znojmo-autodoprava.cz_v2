@@ -1,0 +1,14 @@
+# Konfigurace pro Apache / Active24.cz webhosting
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Přesměrování na HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Zákaz přímého přístupu k souboru s heslem přes prohlížeč
+<Files "smtp-heslo.php">
+  Require all denied
+</Files>

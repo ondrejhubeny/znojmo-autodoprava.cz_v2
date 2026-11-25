@@ -1,14 +1,33 @@
 import React from 'react';
+import { useLanguage } from '../i18n';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenGdpr?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenGdpr }) => {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <div className="footer-logo">
-            <span className="logo-main">Chochola</span>
+          <div className="footer-brand">
+            <a href="#" className="logo footer-logo" aria-label="Znojmo Autodoprava">
+              <span className="logo-main">Znojmo</span>
+              <span className="logo-sub">{t.logoSub}</span>
+            </a>
+            <p className="footer-tagline">{t.footer.tagline}</p>
           </div>
-          <p>&copy; {new Date().getFullYear()} Petr Chochola - Premium Transport. Všechna práva vyhrazena.</p>
+
+          <div className="footer-bottom">
+            <p>
+              &copy; {new Date().getFullYear()} znojmo-autodoprava.cz &bull; {t.footer.rights} &bull;{' '}
+              <button type="button" className="footer-gdpr-link" onClick={onOpenGdpr}>
+                {t.footer.gdprLink}
+              </button>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

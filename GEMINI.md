@@ -1,21 +1,17 @@
 # Project Instructions - znojmo-autodoprava.cz
 
 ## Design & Identity
-- **Theme:** Premium Dark & Gold.
+- **Brand Name:** ZNOJMO AUTODOPRAVA (ZNOJMO TRANSPORT in DE/EN).
+- **Theme:** Clean Monochrome Dark Charcoal, Silver & Crisp White.
 - **Brand Colors:**
-  - Background: `#0a0a0b` (Deep Black)
-  - Accent/Glow: `#c5a059` (Refined Gold)
-  - Text: `#e2e2e2` (Soft White)
-- **Typography:** Always use **Inter** (Sans-Serif) for all text and headings. No serifs.
-- **Imagery:** Focus on Mercedes-Benz fleet. Use high-quality PNGs with transparent backgrounds for the showroom carousel.
+  - Background: `#14161a` / `#1a1d23` (Charcoal / Anthracite)
+  - Accent: `#ffffff` (Pure White) & `#cbd5e1` (Metallic Silver)
+  - Text: `#f1f5f9` (Crisp Off-White)
+- **Typography:** Always use **Inter** (Sans-Serif) for all text and headings.
 
 ## Technical Architecture
 - **Framework:** React + TypeScript + Vite.
-- **Styling:** Vanilla CSS with variables.
-- **Carousel:** Custom infinite loop implementation using a "Triple Buffer" technique for smooth transitions.
-- **Services:** Compact grid for high information density (currently 12 services).
-
-## Content Guidelines
-- Tone: Professional, Reliable, Premium.
-- Language: Czech (primary).
-- Key highlights to maintain: "Tradice od roku 1993", "Mercedes-Benz Fleet", "Profesionální řidiči".
+- **Styling:** Vanilla CSS (`src/index.css`, `src/App.css`).
+- **Localization:** Full CZ, DE, and EN translations in `src/i18n.tsx` (always defaults to `cz` on load).
+- **Vehicle Photos:** Located in `public/vozidla/` with SEO filenames (`01.jpg` to `06.jpg`) so they can be replaced directly on FTP without rebuilding.
+- **Contact Form & Hosting:** Deployed from `dist/` to Active24.cz FTP (`public/send-mail.php` + `public/.htaccess`, reads `$smtp_pass` from `smtp-heslo.php` on FTP).

@@ -1,118 +1,162 @@
 import type { Service, Vehicle, ContactInfo } from './types';
 
-// Import images
-import eClassImg from './assets/images/cars/e-class-silver.png';
-import vianoImg from './assets/images/cars/viano-vine.png';
-import nevobusImg from './assets/images/cars/setra-nevobus.png';
-import sprinterSilverImg from './assets/images/cars/sprinter-silver.png';
-import sprinterBlackImg from './assets/images/cars/sprinter-black.png';
+// Medailonky vozidel (hlavní exteriérové fotky z public/vozidla/)
+const eckoMain = '/vozidla/mercedes-tridy-e.jpg';
+const vianoMain = '/vozidla/mercedes-viano.jpg';
+const sprinterZlatyMain = '/vozidla/mercedes-sprinter-zlaty.jpg';
+const sprinterCernyMain = '/vozidla/mercedes-sprinter-cerny.jpg';
+const setraMain = '/vozidla/autobus-setra.jpg';
 
-export interface ExtendedVehicle extends Vehicle {
-  color: string;
-  glowColor: string;
-  image: string;
-}
+// Galerie - Mercedes-Benz Třídy E (01 až 08)
+const ecko1 = '/vozidla/ecko/mercedes-tridy-e-01.jpg';
+const ecko2 = '/vozidla/ecko/mercedes-tridy-e-02.jpg';
+const ecko3 = '/vozidla/ecko/mercedes-tridy-e-03.jpg';
+const ecko4 = '/vozidla/ecko/mercedes-tridy-e-04.jpg';
+const ecko5 = '/vozidla/ecko/mercedes-tridy-e-05.jpg';
+const ecko6 = '/vozidla/ecko/mercedes-tridy-e-06.jpg';
+const ecko7 = '/vozidla/ecko/mercedes-tridy-e-07.jpg';
+const ecko8 = '/vozidla/ecko/mercedes-tridy-e-08.jpg';
+
+// Galerie - Mercedes-Benz Viano (01 až 08)
+const viano1 = '/vozidla/viano/mercedes-viano-01.jpg';
+const viano2 = '/vozidla/viano/mercedes-viano-02.jpg';
+const viano3 = '/vozidla/viano/mercedes-viano-03.jpg';
+const viano4 = '/vozidla/viano/mercedes-viano-04.jpg';
+const viano5 = '/vozidla/viano/mercedes-viano-05.jpg';
+const viano6 = '/vozidla/viano/mercedes-viano-06.jpg';
+const viano7 = '/vozidla/viano/mercedes-viano-07.jpg';
+const viano8 = '/vozidla/viano/mercedes-viano-08.jpg';
+
+// Galerie - Mercedes-Benz Sprinter Zlatý (01 až 08)
+const sz1 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-01.jpg';
+const sz2 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-02.jpg';
+const sz3 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-03.jpg';
+const sz4 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-04.jpg';
+const sz5 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-05.jpg';
+const sz6 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-06.jpg';
+const sz7 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-07.jpg';
+const sz8 = '/vozidla/sprinter-zlaty/mercedes-sprinter-zlaty-08.jpg';
+
+// Galerie - Mercedes-Benz Sprinter Černý (01 až 08)
+const sc1 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-01.jpg';
+const sc2 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-02.jpg';
+const sc3 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-03.jpg';
+const sc4 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-04.jpg';
+const sc5 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-05.jpg';
+const sc6 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-06.jpg';
+const sc7 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-07.jpg';
+const sc8 = '/vozidla/sprinter-cerny/mercedes-sprinter-cerny-08.jpg';
+
+// Galerie - Autobus Setra (01 až 08)
+const setra1 = '/vozidla/setra/autobus-setra-01.jpg';
+const setra2 = '/vozidla/setra/autobus-setra-02.jpg';
+const setra3 = '/vozidla/setra/autobus-setra-03.jpg';
+const setra4 = '/vozidla/setra/autobus-setra-04.jpg';
+const setra5 = '/vozidla/setra/autobus-setra-05.jpg';
+const setra6 = '/vozidla/setra/autobus-setra-06.jpg';
+const setra7 = '/vozidla/setra/autobus-setra-07.jpg';
+const setra8 = '/vozidla/setra/autobus-setra-08.jpg';
 
 export const CONTACT_INFO: ContactInfo = {
   owner: 'Petr Chochola',
   address: 'Vančurova 13, Znojmo 669 02',
   phones: ['+420 608 707 225'],
   email: 'petrchochola@seznam.cz',
+  ico: '64432157',
 };
 
 export const SERVICES: Service[] = [
   {
     id: 'airport',
     title: 'Transfery na letiště',
-    description: 'Pohodlná doprava na letiště i z něj pro jednotlivce i skupiny.',
+    description: 'Pohodlná doprava na letiště Vídeň, Praha, Brno či Bratislava pro jednotlivce i skupiny.',
   },
   {
     id: 'sports',
     title: 'Doprava pro sportovce',
-    description: 'Pravidelné i jednorázové svozy sportovních týmů na zápasy a tréninky.',
+    description: 'Pravidelné i jednorázové svozy sportovních týmů a klubů na zápasy a soustředění.',
   },
   {
     id: 'weddings',
-    title: 'Svatby',
-    description: 'Reprezentativní vozy Mercedes-Benz pro váš velký den.',
+    title: 'Svatby a oslavy',
+    description: 'Reprezentativní vozy Mercedes-Benz s profesionálním řidičem pro váš velký den.',
   },
   {
     id: 'excursions',
-    title: 'Výlety a exkurze',
-    description: 'Poznávací zájezdy, školní výlety a skupinová turistika.',
+    title: 'Výlety a zájezdy',
+    description: 'Poznávací zájezdy po ČR i Evropě, školní výlety a skupinová turistika.',
   },
   {
     id: 'corporate',
-    title: 'Firemní akce',
-    description: 'Doprava na školení, teambuildingy a firemní večírky.',
+    title: 'Firemní přeprava',
+    description: 'Přeprava managementu i týmů na obchodní jednání, konference a teambuildingy.',
   },
   {
     id: 'drink-drive',
     title: 'Drink & Drive',
-    description: 'Bezpečný odvoz vás i vašeho vozu kdykoliv potřebujete.',
+    description: 'Bezpečný odvoz vás i vašeho vozu z oslav a společenských akcí.',
   },
   {
     id: 'wine-cellars',
     title: 'Putování po sklípcích',
-    description: 'Degustační zájezdy do vinných sklípců s jistotou odvozu.',
+    description: 'Degustační večery a zájezdy do vinných sklípců na Znojemsku s jistotou odvozu.',
   },
   {
     id: 'shuttle',
     title: 'Svoz zaměstnanců',
-    description: 'Pravidelné a včasné svozy zaměstnanců do zaměstnání.',
+    description: 'Spolehlivé smluvní a pravidelné svozy zaměstnanců pro firmy v regionu.',
   },
   {
     id: 'cargo-express',
     title: 'Expresní zásilky',
-    description: 'Rychlá přeprava balíků a dokumentů dostupná 24/7.',
+    description: 'Rychlá přeprava důležitých zásilek a dokumentů přímo na místo určení.',
   },
 ];
 
-// Order: Nevobus, Viano, E-Class (Center), Sprinter Silver, Sprinter Black
-export const FLEET: ExtendedVehicle[] = [
+export const FLEET: Vehicle[] = [
   {
-    id: 'setra-nevobus',
-    model: 'Setra "NevoBus"',
-    capacity: '49+2 míst',
-    features: ['Černá perleť', 'Luxusní autokar', 'WC', 'Kuchyňka', 'Klimatizace'],
-    color: 'Black',
-    glowColor: 'rgba(197, 160, 89, 0.25)',
-    image: nevobusImg,
-  },
-  {
-    id: 'viano-vine',
-    model: 'Mercedes-Benz Viano',
-    capacity: '7 míst',
-    features: ['Vínová metalíza', 'Klimatizace', 'Konferenční uspořádání', 'Pojištění sedadel'],
-    color: 'Wine',
-    glowColor: 'rgba(197, 160, 89, 0.25)',
-    image: vianoImg,
-  },
-  {
-    id: 'e-class-silver',
-    model: 'Mercedes-Benz E-Class',
+    id: 'e-class',
+    model: 'Mercedes-Benz Třídy E',
+    subtitle: 'Business & VIP kombi',
     capacity: '4 místa',
-    features: ['Stříbrná metalíza', 'Luxusní interiér', 'Business Class servis'],
-    color: 'Silver',
-    glowColor: 'rgba(197, 160, 89, 0.25)',
-    image: eClassImg,
+    features: ['Dvouzónová klimatizace', 'Kožený interiér', 'Vzduchový podvozek', 'Panoramatická střecha'],
+    image: eckoMain,
+    gallery: [ecko1, ecko2, ecko3, ecko4, ecko5, ecko6, ecko7, ecko8],
   },
   {
-    id: 'sprinter-silver',
+    id: 'viano',
+    model: 'Mercedes-Benz Viano',
+    subtitle: 'Komfortní rodinný a firemní minivan',
+    capacity: '7 míst',
+    features: ['Klimatizace v celém voze', 'Kožená polohovatelná sedadla', 'Velký zavazadlový prostor', 'Automatické otevírání/zavírání bočních dveří'],
+    image: vianoMain,
+    gallery: [viano1, viano2, viano3, viano4, viano5, viano6, viano7, viano8],
+  },
+  {
+    id: 'sprinter-gold',
     model: 'Mercedes-Benz Sprinter',
+    subtitle: 'Zájezdový mikrobus',
     capacity: '20 míst',
-    features: ['Stříbrná metalíza', 'Klimatizace', 'Polohovatelná sedadla', 'Mikrofon'],
-    color: 'Silver',
-    glowColor: 'rgba(197, 160, 89, 0.25)',
-    image: sprinterSilverImg,
+    features: ['Klimatizace v celém voze', 'Polohovatelná zájezdová sedadla', 'Mikrofon pro průvodce a TV', 'Lednice a velký zavazadlový prostor'],
+    image: sprinterZlatyMain,
+    gallery: [sz1, sz2, sz3, sz4, sz5, sz6, sz7, sz8],
   },
   {
     id: 'sprinter-black',
     model: 'Mercedes-Benz Sprinter',
-    capacity: '16 míst',
-    features: ['Černá perleť', 'Klimatizace', 'DVD přehrávač', 'USB nabíjení'],
-    color: 'Black',
-    glowColor: 'rgba(197, 160, 89, 0.25)',
-    image: sprinterBlackImg,
+    subtitle: 'Zájezdový mikrobus',
+    capacity: '20 míst',
+    features: ['Klimatizace v celém voze', 'Polohovatelná zájezdová sedadla', 'Mikrofon pro průvodce a TV', 'Lednice a velký zavazadlový prostor'],
+    image: sprinterCernyMain,
+    gallery: [sc1, sc2, sc3, sc4, sc5, sc6, sc7, sc8],
+  },
+  {
+    id: 'setra',
+    model: 'Setra S 416 GT-HD',
+    subtitle: 'Příměstský autobus',
+    capacity: '52 míst',
+    features: ['Klimatizace v celém voze', 'Polohovatelná zájezdová sedadla', 'Mikrofon pro průvodce a TV', 'Lednice a velký zavazadlový prostor'],
+    image: setraMain,
+    gallery: [setra1, setra2, setra3, setra4, setra5, setra6, setra7, setra8],
   },
 ];

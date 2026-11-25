@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../i18n';
 
 import mmrImg from '../assets/references/MMR-CR.webp';
 import egstonImg from '../assets/references/egston.svg';
@@ -42,23 +43,52 @@ const CLIENT_LOGOS = [
   { name: 'Hotel Savannah', src: savanahImg },
 ];
 
-// Doubled logos for seamless infinite continuous scroll
+// Desktop rows: 6, 7, 6 (19 logos total)
+const DESKTOP_ROW_1 = CLIENT_LOGOS.slice(0, 6);
+const DESKTOP_ROW_2 = CLIENT_LOGOS.slice(6, 13);
+const DESKTOP_ROW_3 = CLIENT_LOGOS.slice(13, 19);
+
+// Doubled logos for seamless infinite continuous scroll on mobile
 const MARQUEE_LOGOS = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
 export const AboutSection: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="o-nas" className="about">
       <div className="container about-content">
-        <span className="subtitle">Proč my</span>
-        <h2>Tradice a profesionalita</h2>
-        <p className="about-text">
-          Již více než 30 let poskytujeme služby v oblasti dopravy s důrazem na individuální přístup. 
-          Naši řidiči jsou profesionálové s miliony kilometrů bez nehod.
-        </p>
+        <div className="section-header">
+          <h2>{t.references.title}</h2>
+          <p className="section-desc">{t.references.desc}</p>
+        </div>
 
         <div className="references-ticker-container">
-          <span className="ref-title">Důvěřují nám významné firmy a instituce:</span>
-          
+          {/* Desktop 3-row static grid (6 - 7 - 6) */}
+          <div className="references-desktop-grid">
+            <div className="references-row row-6">
+              {DESKTOP_ROW_1.map((logo) => (
+                <div key={logo.name} className="reference-logo-card">
+                  <img src={logo.src} alt={logo.name} title={logo.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <div className="references-row row-7">
+              {DESKTOP_ROW_2.map((logo) => (
+                <div key={logo.name} className="reference-logo-card">
+                  <img src={logo.src} alt={logo.name} title={logo.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+            <div className="references-row row-6">
+              {DESKTOP_ROW_3.map((logo) => (
+                <div key={logo.name} className="reference-logo-card">
+                  <img src={logo.src} alt={logo.name} title={logo.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile full-width color marquee */}
           <div className="logo-marquee-wrapper">
             <div className="logo-marquee-track">
               {MARQUEE_LOGOS.map((logo, index) => (

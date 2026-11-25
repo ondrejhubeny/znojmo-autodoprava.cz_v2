@@ -8,9 +8,11 @@ export interface Service {
 export interface Vehicle {
   id: string;
   model: string;
+  subtitle?: string;
   capacity: string;
   features: string[];
-  image?: string;
+  image: string;
+  gallery: string[];
 }
 
 export interface ContactInfo {
@@ -20,4 +22,3 @@ export interface ContactInfo {
   email: string;
   ico?: string;
 }
-

@@ -1,64 +1,72 @@
 import React, { useState } from 'react';
-import { 
-  Plane, 
-  Trophy, 
-  Heart, 
-  Map, 
-  Briefcase, 
-  Clock, 
-  GlassWater, 
-  Bus, 
-  Package, 
+import {
+  Plane,
+  Trophy,
+  Heart,
+  Map,
+  Briefcase,
+  Clock,
+  GlassWater,
+  Bus,
+  Package,
   Info,
-  X
+  X,
 } from 'lucide-react';
-import { SERVICES } from '../constants';
+import { useLanguage } from '../i18n';
 
 export const ServicesSection: React.FC = () => {
   const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const getServiceIcon = (id: string) => {
-    const props = { size: 24, className: "icon-gold" };
+    const props = { size: 24, className: 'icon-gold' };
     switch (id) {
-      case 'airport': return <Plane {...props} />;
-      case 'sports': return <Trophy {...props} />;
-      case 'weddings': return <Heart {...props} />;
-      case 'excursions': return <Map {...props} />;
-      case 'corporate': return <Briefcase {...props} />;
-      case 'drink-drive': return <Clock {...props} />;
-      case 'wine-cellars': return <GlassWater {...props} />;
-      case 'shuttle': return <Bus {...props} />;
-      case 'cargo-express': return <Package {...props} />;
-      default: return <Info {...props} />;
+      case 'airport':
+        return <Plane {...props} />;
+      case 'sports':
+        return <Trophy {...props} />;
+      case 'weddings':
+        return <Heart {...props} />;
+      case 'excursions':
+        return <Map {...props} />;
+      case 'corporate':
+        return <Briefcase {...props} />;
+      case 'drink-drive':
+        return <Clock {...props} />;
+      case 'wine-cellars':
+        return <GlassWater {...props} />;
+      case 'shuttle':
+        return <Bus {...props} />;
+      case 'cargo-express':
+        return <Package {...props} />;
+      default:
+        return <Info {...props} />;
     }
   };
 
   const handleCardClick = (id: string) => {
-    setActiveServiceId(prev => prev === id ? null : id);
+    setActiveServiceId((prev) => (prev === id ? null : id));
   };
 
-  const activeService = SERVICES.find(s => s.id === activeServiceId);
+  const activeService = t.services.items.find((s) => s.id === activeServiceId);
 
   return (
     <section id="sluzby" className="services">
       <div className="container">
         <div className="section-header">
-          <span className="subtitle">Prémiové řešení</span>
-          <h2>Naše služby</h2>
+          <h2>{t.services.title}</h2>
         </div>
-        
+
         <div className="services-grid">
-          {SERVICES.map(service => {
+          {t.services.items.map((service) => {
             const isSelected = activeServiceId === service.id;
             return (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 className={`service-card-compact ${isSelected ? 'active-tap' : ''}`}
                 onClick={() => handleCardClick(service.id)}
               >
-                <div className="service-icon-compact">
-                  {getServiceIcon(service.id)}
-                </div>
+                <div className="service-icon-compact">{getServiceIcon(service.id)}</div>
                 <div className="service-content-compact">
                   <h3>{service.title}</h3>
                   <p className="desktop-desc">{service.description}</p>
@@ -74,10 +82,10 @@ export const ServicesSection: React.FC = () => {
             <div className="detail-header">
               <span className="detail-icon">{getServiceIcon(activeService.id)}</span>
               <h4>{activeService.title}</h4>
-              <button 
+              <button
                 className="close-detail-btn"
                 onClick={() => setActiveServiceId(null)}
-                aria-label="Zavřít detail"
+                aria-label={t.services.closeDetail}
               >
                 <X size={18} />
               </button>
